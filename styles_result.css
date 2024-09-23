@@ -28,10 +28,10 @@ body::before {
     z-index: 1; /* Ensure the overlay is above the background image */
 }
 
-#result-message {
+#result-message, #continue-game {
     position: relative;
     z-index: 2; /* Ensure the content is above the overlay */
-    color: #add8e6; /* 设置字体颜色为浅蓝色 */
+    color: #add8e6;
 }
 
 #result-message {
@@ -49,4 +49,3 @@ body::before {
     color: #000; /* 设置字体颜色为黑色 */
     font-weight: bold; /* 设置字体加粗 */
 }
-
