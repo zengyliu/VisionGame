@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    font-size: 40px;
+    font-size: 30px;
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
@@ -13,6 +13,9 @@ body {
     flex-direction: column;
     align-items: center; /* 子元素水平居中 */
     gap: 20px; /* 调整 gap 以增加下拉框和按钮之间的间距 */
+    width: 100%; /* 或者设置一个具体的宽度，例如 800px */
+    max-width: 450px; /* 设置父容器的最大宽度 */
+    margin: 0 auto; /* 居中对齐 */
 }
 
 .selector-container {
@@ -20,19 +23,40 @@ body {
     align-items: center; /* 垂直居中 */
     gap: 10px; /* 标签和下拉框之间的间距 */
     font-size: 1em;
+    width: 100%; /* 使每个选择器容器占满父容器的宽度 */
+    justify-content: center; /* 水平居中 */
+}
+
+.selector-container label,
+.selector-container select,
+.selector-container input,
+.selector-container button {
+    flex: 1; 
+    max-width: 500px; 
+    display: block; /* 确保元素为块级元素 */
 }
 
 #file-input {
     font-size: 1em;
     padding: 15px;
     margin-top: 10px; /* 调整 margin */
-    width: 250px;
+    /*width: 250px;*/
     background-color: white; /* 背景颜色 */
     appearance: none; /* 移除默认样式 */
     -webkit-appearance: none; /* 移除默认样式 */
     -moz-appearance: none; /* 移除默认样式 */
     box-sizing: border-box; /* 包括 padding 和 border 在内的宽度计算 */
-    width: 100%;
+    width: 100%; /* 使输入框占满父容器的宽度 */
+}
+
+#file-button {
+    font-size: 1em;
+    padding: 15px;
+    margin-top: 10px; /* 调整 margin */
+    background-color: white; /* 背景颜色 */
+    cursor: pointer;
+    border: 1px solid #ccc; /* 边框样式 */
+    box-sizing: border-box; /* 包括 padding 和 border 在内的宽度计算 */
 }
 
 #start-game {

@@ -60,7 +60,7 @@ function displayWord() {
     // Generate random offsets for each letter
     randomOffsets[0] = 0;
     for (let i = 1; i < letters.length; i++) {
-        randomOffsets[i] = Math.floor(Math.random() * 4) + 1;
+        randomOffsets[i] = Math.floor(Math.random() * 1.5) + 1;
         if (Math.random() > 0.5) {
             randomOffsets[i] *= -1;
         }
