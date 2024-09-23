@@ -39,7 +39,10 @@ function loadWords(event) {
         alert('No file content found.');
         return;
     }
-
+     // Ensure the file content is correctly decoded
+     const decoder = new TextDecoder('utf-8');
+     const decodedContent = decoder.decode(new TextEncoder().encode(fileContent));
+ 
     words = fileContent.split(/\s+/).filter(word => word.trim());
     displayWord();
 }
@@ -140,6 +143,15 @@ function displayNextWord() {
     }
     displayWord();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 其他代码...
+
+    // 为退出按钮添加事件监听器
+    document.getElementById('exit-game').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+});
 
 document.getElementById('show-lowercase').addEventListener('click', toggleLowercase);
 document.getElementById('next-word').addEventListener('click', displayNextWord);

@@ -14,6 +14,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    position: relative; /* 确保body是相对定位的 */
 }
 
 #word-container {
@@ -21,10 +22,15 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: relative; /* 确保body是相对定位的 */
+    height: 100%; /* 确保容器高度足够 */
 }
 
 #word-display {
     font-size: var(--font-size);
+    position: absolute;
+    left: 40%; /* 左侧保持在屏幕左侧20%处 */
+    top: 0%; /* 顶部保持在屏幕顶部35%处 */
 }
 
 #lowercase-display {
@@ -43,4 +49,20 @@ body {
     position: absolute;
     bottom: 20px;
     left: 20px;
+}
+
+#round-count {
+    font-size: 2em; /* 调整字体大小 */
+}
+
+.button-container button {
+    font-size: 1.4em; /* 调整按钮字体大小 */
+    padding: 15px 30px; /* 调整按钮内边距 */
+    margin: 20px; /* 调整按钮外边距 */
+    background-color: #4407dd; /* 浅蓝色背景颜色 */
+    border: none; /* 移除边框 */
+    color: #ffffff; /* 设置字体颜色为黑色 */
+    font-weight: bold; /* 设置字体加粗 */
+    width: 280px; /* 设置按钮宽度 */
+    height: 50px; /* 设置按钮高度 */
 }
