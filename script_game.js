@@ -44,6 +44,24 @@ function loadWords(event) {
      const decodedContent = decoder.decode(new TextEncoder().encode(fileContent));
  
     words = fileContent.split(/\s+/).filter(word => word.trim());
+
+    if (words.length > 30) {
+        const selectedWords = [];
+        const oddIndices = Array.from({ length: Math.floor(words.length / 2) }, (_, i) => 2 * i + 1);
+        
+        for (let i = 0; i < 15; i++) {
+            const randomIndex = Math.floor(Math.random() * oddIndices.length);
+            const oddIndex = oddIndices.splice(randomIndex, 1)[0];
+            
+            selectedWords.push(words[oddIndex]);
+            if (oddIndex + 1 < words.length) {
+                selectedWords.push(words[oddIndex + 1]);
+            }
+        }
+        
+        words = selectedWords;
+    }
+
     displayWord();
 }
 

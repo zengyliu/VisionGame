@@ -34,7 +34,10 @@ body {
 }
 
 #lowercase-display {
-    font-size: var(--font-size);
+    font-size: calc(var(--font-size) * 6); /* 设置大字体 */
+    position: relative;
+    left: 0%;
+    top: 10%; /* 确保显示在word-display的下方 */
 }
 
 .button-container {
