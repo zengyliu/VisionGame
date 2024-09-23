@@ -27,6 +27,15 @@ body {
     justify-content: center; /* 水平居中 */
 }
 
+/* 新增样式：调整下拉框字体大小 */
+.selector-container select {
+    font-size: 1em; /* 调整为更大的字体大小 */
+}
+
+.selector-container select option {
+    font-size: 1em; /* 确保选项的字体大小也变大 */
+}
+
 .selector-container label,
 .selector-container select,
 .selector-container input,
@@ -66,6 +75,8 @@ body {
     width: 350px;
     height: 60px;
     cursor: pointer;
+    background-color: #ff69b4; /* 更粉的背景颜色 */
+    border: none; /* 移除边框 */
 }
 
 .small-image {
