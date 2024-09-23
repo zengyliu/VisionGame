@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 100vh; /* 使 body 高度占满整个视口 */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 子元素水平居中 */
+    gap: 20px; /* 调整 gap 以增加下拉框和按钮之间的间距 */
+}
+
+.selector-container {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    gap: 10px; /* 标签和下拉框之间的间距 */
+    font-size: 1em;
+}
+
+#file-input {
+    font-size: 1em;
+    padding: 15px;
+    margin-top: 10px; /* 调整 margin */
+    width: 250px;
+    background-color: white; /* 背景颜色 */
+    appearance: none; /* 移除默认样式 */
+    -webkit-appearance: none; /* 移除默认样式 */
+    -moz-appearance: none; /* 移除默认样式 */
+    box-sizing: border-box; /* 包括 padding 和 border 在内的宽度计算 */
+    width: 100%;
+}
+
+#start-game {
+    font-size: 1em;
+    padding: 20px;
+    margin-top: 20px; /* 调整 margin-top 以增加与上方元素的间距 */
+    width: 350px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.small-image {
+    width: 3cm;
+    height: 3cm;
+}
