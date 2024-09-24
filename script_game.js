@@ -21,12 +21,26 @@ style.innerHTML = `
      .letter-spacing {
         margin-right: 60px; /* Adjust the value as needed */
     }
+   
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* Chrome, Safari 和 Opera */
+        body {
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+        }
+    }
+
     #word-display {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 68vh; /* Full viewport height */
         font-size: var(--font-size);
+       /* font-weight: bold;*/
+        font-family: 'Arial', sans-serif; /* 使用清晰的字体 */
+        font-smooth: always; /* 非标准属性，用于字体平滑 */
+        -moz-osx-font-smoothing: grayscale; /* Firefox 专用属性，适用于 macOS */
+        -webkit-font-smoothing: antialiased; /* WebKit 浏览器专用属性，用于字体平滑 */
     }
     #word-display span {
         display: inline-block;
@@ -84,7 +98,10 @@ function displayWord() {
     // Generate random offsets for each letter
     randomOffsets[0] = 0;
     for (let i = 1; i < letters.length; i++) {
-        randomOffsets[i] = Math.floor(Math.random() * 1.5) + 1;
+        randomOffsets[i] = Math.floor(Math.random() * 1.4);
+        if (randomOffsets[i] == 0) {
+            randomOffsets[i] = 1;
+        }
         if (Math.random() > 0.5) {
             randomOffsets[i] *= -1;
         }
