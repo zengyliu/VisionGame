@@ -1,11 +1,14 @@
 const fontSize = localStorage.getItem('fontSize') || '16px';
 const language = localStorage.getItem('language') || 'en';
+const maxRoundCount = 30;
 
 document.documentElement.style.setProperty('--font-size', fontSize);
 
 let words = [];
 let currentWordIndex = 0;
 let score = 0;
+let totalCharNum = 0;
+let alignedCharNum = 0;
 let roundCount = 0;
 
 // Create a <style> element
@@ -16,18 +19,18 @@ style.innerHTML = `
         color: white; /* Set font color to white */
     }
      .letter-spacing {
-        margin-right: 10px; /* Adjust the value as needed */
+        margin-right: 60px; /* Adjust the value as needed */
     }
     #word-display {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; /* Full viewport height */
+        height: 68vh; /* Full viewport height */
         font-size: var(--font-size);
     }
     #word-display span {
         display: inline-block;
-        letter-spacing: 30px;
+        letter-spacing: 40px;
     }
 `;
 
@@ -45,9 +48,9 @@ function loadWords(event) {
  
     words = fileContent.split(/\s+/).filter(word => word.trim());
 
-    if (words.length > 30) {
+    if (words.length > maxRoundCount) {
         const selectedWords = [];
-        const oddIndices = Array.from({ length: Math.floor(words.length / 2) }, (_, i) => 2 * i + 1);
+        const oddIndices = Array.from({ length: Math.floor(words.length / 2) }, (_, i) => 2 * i);
         
         for (let i = 0; i < 15; i++) {
             const randomIndex = Math.floor(Math.random() * oddIndices.length);
@@ -108,7 +111,7 @@ function adjustLetter(index) {
 
     let maxStep = Math.abs(letterOffset - firstLetterOffset);
     let step = Math.min(Math.floor(Math.random() * 3) + 2, maxStep/4);
-    if (step < 2){
+    if (step <= 1){
         step = 0;
     }
     
@@ -135,16 +138,16 @@ function toggleLowercase() {
 
 function updateRoundCount() {
     roundCount++;
-    document.getElementById('round-count').textContent = `${roundCount}/30`;
+    document.getElementById('round-count').textContent = `${roundCount}/${maxRoundCount}`;
 
-    if (roundCount === 30) {
+    if (roundCount === maxRoundCount) {
+        score = Math.ceil(alignedCharNum*100/totalCharNum);
         localStorage.setItem('score', score);
         window.location.href = 'result.html';
     }
 }
 
 function displayNextWord() {
-    currentWordIndex++;
 
     const spans = document.querySelectorAll('#word-display span');
     let allAligned = true;
@@ -155,10 +158,12 @@ function displayNextWord() {
             break;
         }
     }
-
+    
+    totalCharNum += words[currentWordIndex].length
     if (allAligned) {
-        score += 5;
+        alignedCharNum += words[currentWordIndex].length;
     }
+    currentWordIndex++;
     displayWord();
 }
 
