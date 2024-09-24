@@ -44,8 +44,9 @@ body::before {
     padding: 10px 20px; /* Add some padding to the button */
     font-size: 40px; /* Increase the font size */
     cursor: pointer; /* Change cursor to pointer on hover */
-    background-color: transparent; /* 浅蓝色背景颜色 */
+    background-color: #FFA07A;; /* 浅蓝色背景颜色 */
     border: none; /* 移除边框 */
     color: #000; /* 设置字体颜色为黑色 */
     font-weight: bold; /* 设置字体加粗 */
+    margin-top: 60px; /* 增加顶部间距 */
 }
