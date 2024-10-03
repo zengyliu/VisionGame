@@ -15,6 +15,13 @@ body {
     height: 100vh;
     margin: 0;
     position: relative; /* 确保body是相对定位的 */
+    -webkit-font-smoothing: antialiased; /* For WebKit browsers */
+    -moz-osx-font-smoothing: grayscale;  /* For Firefox on macOS */
+    font-smooth: always; /* Non-standard property for font smoothing */
+    line-height: 1.6; /* Adjust line height for better readability */
+    letter-spacing: 0.5px; /* Adjust letter spacing for better readability */
+    background-color: #f5f5f5; /* Light background for better contrast */
+    color: #333; /* Dark text color for better contras
 }
 
 #word-container {
