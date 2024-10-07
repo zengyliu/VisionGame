@@ -36,7 +36,7 @@ style.innerHTML = `
         align-items: center;
         height: 68vh; /* Full viewport height */
         font-size: var(--font-size);
-       /* font-weight: bold;*/
+        font-weight: bold;
         font-family: 'Arial', sans-serif; /* 使用清晰的字体 */
         font-smooth: always; /* 非标准属性，用于字体平滑 */
         -moz-osx-font-smoothing: grayscale; /* Firefox 专用属性，适用于 macOS */
@@ -45,6 +45,7 @@ style.innerHTML = `
     #word-display span {
         display: inline-block;
         letter-spacing: 40px;
+        border-radius: 4px;  /*添加圆角 */
     }
 `;
 
@@ -56,26 +57,25 @@ function loadWords(event) {
         alert('No file content found.');
         return;
     }
-     // Ensure the file content is correctly decoded
-     const decoder = new TextDecoder('utf-8');
-     const decodedContent = decoder.decode(new TextEncoder().encode(fileContent));
- 
-    words = fileContent.split(/\s+/).filter(word => word.trim());
+
+    const decoder = new TextDecoder('utf-8');
+    const decodedContent = decoder.decode(new TextEncoder().encode(fileContent));
+    words = decodedContent.split(/\s+/).filter(word => word.trim());
 
     if (words.length > maxRoundCount) {
         const selectedWords = [];
         const oddIndices = Array.from({ length: Math.floor(words.length / 2) }, (_, i) => 2 * i);
-        
+
         for (let i = 0; i < 15; i++) {
             const randomIndex = Math.floor(Math.random() * oddIndices.length);
             const oddIndex = oddIndices.splice(randomIndex, 1)[0];
-            
+
             selectedWords.push(words[oddIndex]);
             if (oddIndex + 1 < words.length) {
                 selectedWords.push(words[oddIndex + 1]);
             }
         }
-        
+
         words = selectedWords;
     }
 
@@ -111,6 +111,7 @@ function displayWord() {
         const span = document.createElement('span');
         span.textContent = letters[i];
         span.style.position = 'relative';
+        //span.classList.add('highlight'); // 添加这一行代码
         span.style.top = `${randomOffsets[i]}mm`;
         if (i > 0) {
             span.addEventListener('click', () => adjustLetter(i));
